@@ -223,9 +223,9 @@ public:
                 factorCombine *= factor01[left % 2][idim];
                 left /= 2;
             }
-            const Eigen::Tensor<double, 1, Eigen::RowMajor> &row =
-            factorCombine * mGridData.slice(start, count).reshape(shapeV)
-            .template cast<double>();
+            auto sliced = mGridData.slice(start, count);
+            Eigen::Tensor<double, 1, Eigen::RowMajor> row = 
+                factorCombine * sliced.reshape(shapeV).template cast<double>();
             uData += Eigen::Map<const DRowV>(row.data(), numUniqueData());
         }
         

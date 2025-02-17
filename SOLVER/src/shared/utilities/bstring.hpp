@@ -17,6 +17,8 @@
 #include <boost/algorithm/string.hpp>
 #pragma clang diagnostic pop
 
+#include <boost/type_index.hpp>
+
 #include <map>
 
 namespace bstring {
